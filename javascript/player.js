@@ -1,10 +1,8 @@
-var Player = function(){
+function Player () {
     this.x = 550;
     this.y = 800;
-
     this.keyboard = new Keyboard();
-    this.renderPlayer();
-  };
+};
 
   Player.prototype.renderPlayer = function(){
       console.log("ENTRAA")
@@ -12,7 +10,6 @@ var Player = function(){
       var ctx = canvas.getContext("2d");
       ctx.fillRect(550, 730, 80, 100);
       }
-
 
 
 // function moveRight (){
