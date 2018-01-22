@@ -2,6 +2,7 @@
 window.onload = function() {
     var board = new Board();
     var game = new Game();
+    var keys = new Keyboard();
    };
    
    function Game() {
