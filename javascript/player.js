@@ -12,10 +12,11 @@ Player.prototype.renderPlayer = function () {
 }
 
 Player.prototype.move = function () {
-  this.x += this.speed * this.dirX;
-  this.y += this.speed * this.dirY;
-  if (this.x >= (canvas.width - 80) || this.x <= 0) {
-    this.speed *= -1
+  var newX = this.x + this.speed * this.dirX;
+  var newY = this.y + this.speed * this.dirY;
+  if (newX <= (canvas.width - 80) && newX >= 0) {
+    this.x = newX;
+    this.y = newY;
   }
 }
 
