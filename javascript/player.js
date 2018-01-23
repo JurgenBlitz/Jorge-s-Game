@@ -8,13 +8,14 @@ function Player() {
 };
 
 Player.prototype.renderPlayer = function () {
+  ctx.fillStyle="#000000";
   ctx.fillRect(this.x, this.y, 80, 100);
 }
 
 Player.prototype.move = function () {
   var newX = this.x + this.speed * this.dirX;
   var newY = this.y + this.speed * this.dirY;
-  if (newX <= (canvas.width - 80) && newX >= 0) {
+  if (newX <= (canvas.width - 90) && newX >= 0) {
     this.x = newX;
     this.y = newY;
   }
