@@ -15,7 +15,10 @@ Player.prototype.renderPlayer = function () {
 Player.prototype.move = function () {
   this.x += this.speed * this.dirX;
   this.y += this.speed * this.dirY;
-};
+  if (this.x >= (canvas.width - 80) || this.x <= 0) {
+    this.speed *= -1
+  }
+}
 
 Player.prototype.keyboardEventDown = function (e) {
   if (this.keyboard.isKeyLeft(e)) {
@@ -35,4 +38,5 @@ Player.prototype.keyboardEventUp = function (e) {
   if (this.keyboard.isKeyRight(e)) {
     this.dirX = 0;
   }
-};
+}
+

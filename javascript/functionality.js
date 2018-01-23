@@ -10,7 +10,7 @@ window.onload = function() {
 };
 
 function Game() {
-  // this.fps = 50;
+  this.fps = 50;
   this.timer = "02.00 min"; //pass to seconds or something, god dammit
   this.player = new Player();
 
@@ -21,6 +21,6 @@ function Game() {
 }
 
 function renderGame() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   game.player.renderPlayer();
 }
