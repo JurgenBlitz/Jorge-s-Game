@@ -7,13 +7,12 @@ window.onload = function() {
   var keys = new Keyboard();
 
   setInterval(renderGame, 50);
+  setInterval(game.generateFood.bind(game), 2000);
 };
 
 function Game() {
-  this.fps = 50;
-  this.timer = "02.00 min"; //pass to seconds or something, god dammit
   this.player = new Player();
-  this.createFood();
+  this.food = [];
   
   window.addEventListener(
     "keydown",
@@ -21,21 +20,25 @@ function Game() {
   );
 }
 
-Game.prototype.createFood = function() {
-  this.food = new Food(10);
-  this.junk = new Food(-10);
+Game.prototype.generateFood = function() {
+  var healthy = Math.random() > 0.5;
+  var foodInst;
+  
+  if (healthy) {
+  	foodInst = new Food(10);
+  } else {
+  	foodInst = new Food(-10);
+  }
+  this.food.push(foodInst);
 }
 
 function renderGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   game.player.renderPlayer();
-  game.food.render();
-  game.junk.render();
+  
+  //render every food item
+  game.food.forEach(function(elem) {
+    elem.move();
+    elem.render();
+  });
 }
-
-// Game.prototype.createFood = function() {
-//   //var that = this;
-//   var pxSec = Math.random() * 250 + 100;
-//   var food = new Food(pxSec / this.fps);
-//   this.food.push(food);
-// };
