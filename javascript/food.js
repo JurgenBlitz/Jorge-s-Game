@@ -1,7 +1,7 @@
 
 function Food() {
         this.speed = 50;
-        this.x =  Math.random() * (gameView.width) -100;
+        this.x =  Math.random() * (canvas.width) -100;
         this.y = -50;
         this.points = function(){
             var healthyFood = new Food(-10);
@@ -29,13 +29,7 @@ function Food() {
       ctx.fillRect(this.x, this.y, 50, 50);
     };
 
-    Food.prototype.delete = function() {
-      this.food.remove();
-    };
-
-    // Game.prototype.createFoof = function() {
-    //   var that = this;
-    //   var pxSec = Math.random() * 250 + 100;
-    //   var food = new Enemy(pxSec / this.fps);
-    //   this.food.push(food);
+    // Food.prototype.delete = function() {
+    //   this.food.remove();
     // };
+

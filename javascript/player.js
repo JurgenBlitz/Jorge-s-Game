@@ -8,7 +8,6 @@ function Player() {
 };
 
 Player.prototype.renderPlayer = function () {
-  
   ctx.fillRect(this.x, this.y, 80, 100);
 }
 
