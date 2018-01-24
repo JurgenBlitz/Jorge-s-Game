@@ -45,7 +45,6 @@ function renderGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   game.player.renderPlayer();
 
-
   //render every food item
   for (var i = game.food.length - 1; i >= 0; i--) {
     var elem = game.food[i];
