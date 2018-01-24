@@ -11,10 +11,10 @@ function Food(points) {
 Food.prototype.render = function() {
   	if (this.healthy) {
         var img = new Image();
-        img.src = "/home/jorge/Documentos/IronFiles/games/Jorge-s-Game/images/apple.png";
+        img.src = "images/apple.png";
     } else {
       var img = new Image();
-      img.src = "/home/jorge/Documentos/IronFiles/games/Jorge-s-Game/images/burguer.png";
+      img.src = "images/burguer.png";
     }
     ctx.drawImage(img, this.x, this.y, 50, 50);
 };
