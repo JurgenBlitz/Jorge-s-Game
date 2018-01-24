@@ -1,6 +1,8 @@
 function Player() {
   this.x = 550;
   this.y = 740;
+  this.height = 100;
+  this.width = 80;
   this.speed = 15;
   this.gravity = 0.10;
   this.dirX = 0;
@@ -24,6 +26,10 @@ Player.prototype.move = function() {
   }
 };
 
+// Player.prototype.jump = function() {
+
+// }
+
 Player.prototype.keyboardEventDown = function (e) {
   if (this.keyboard.isKeyLeft(e)) {
     this.dirX = -1;
@@ -33,10 +39,10 @@ Player.prototype.keyboardEventDown = function (e) {
     this.dirX = 1;
     this.move();
   }
-  if (this.keyboard.isKeyUp(e)) {
-    this.dirY = -1;
-    this.move();
-  }
+  // if (this.keyboard.isKeyUp(e)) {
+  //   this.dirY = -1;
+  //   this.move();
+  // }
 };
 
 Player.prototype.keyboardEventUp = function(e) {
@@ -46,9 +52,9 @@ Player.prototype.keyboardEventUp = function(e) {
   if (this.keyboard.isKeyRight(e)) {
     this.dirX = 0;
   }
-  if (this.keyboard.isKeyUp(e)) {
-    this.dirY = 1;
-    this.move();
-  }
+  // if (this.keyboard.isKeyUp(e)) {
+  //   this.dirY = 1;
+  //   this.move();
+  // }
 };
 

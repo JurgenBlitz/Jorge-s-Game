@@ -6,7 +6,7 @@ var Board = function(){
         canvas.height = 850;
         
         var background = new Image;
-        background.src = "/Images/field.jpeg";
+        background.src = "/images/field.jpeg";
         background.onload = function() {
             ctx.drawImage(background, 0, 0);
         };

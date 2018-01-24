@@ -34,13 +34,13 @@ Game.prototype.generateFood = function() {
 
 Game.prototype.checkCollision = function(player, food) {
   if (
-    player.x < food.x + food.width &&
-    player.x + player.width > food.x &&
-    player.y < food.y + food.height &&
-    player.y + player.height > food.y
+    food.x < player.x + player.width &&
+    food.x + food.width > player.x &&
+    food.y < player.y + player.height &&
+    food.y + food.height > player.y
   ) {
+    food.delete();
   }
-  console.log("Collision");
 };
 
 function renderGame() {
@@ -53,7 +53,7 @@ function renderGame() {
   game.food.forEach(function(elem) {
     elem.move();
     elem.render();
-//elem.checkCollision();
+    game.checkCollision(game.player, elem);
   });
 
 }

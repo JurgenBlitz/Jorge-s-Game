@@ -2,6 +2,8 @@ function Food(points) {
     this.speed = 10;
     this.x =  Math.random() * (canvas.width) -100;
     this.y = 0;
+    this.height = 50;
+    this.width = 50;
     this.points = points;
   	this.healthy = (points > 0);
 }
