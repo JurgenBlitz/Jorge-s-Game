@@ -33,18 +33,13 @@ Game.prototype.generateFood = function() {
 };
 
 Game.prototype.checkCollision = function(player, food) {
-  if (
+  return (
     food.x < player.x + player.width &&
     food.x + food.width > player.x &&
     food.y < player.y + player.height &&
     food.y + food.height > player.y
-  ) {
-    food.delete();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    game.player.renderPlayer();
-  }
+  );
 };
-
 function renderGame() {
   //render the player
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -52,10 +47,15 @@ function renderGame() {
 
 
   //render every food item
-  game.food.forEach(function(elem) {
+  for (var i = game.food.length - 1; i >= 0; i--) {
+    var elem = game.food[i];
     elem.move();
     elem.render();
-    game.checkCollision(game.player, elem);
-  });
-
+    if (game.checkCollision(game.player, elem)) {
+      elem.delete();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      game.player.renderPlayer();
+      game.food.splice(i, 1);
+    };
+  }
 }
