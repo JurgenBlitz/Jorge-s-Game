@@ -53,6 +53,7 @@ function renderGame() {
   game.food.forEach(function(elem) {
     elem.move();
     elem.render();
+//elem.checkCollision();
   });
-  game.checkCollision();
+
 }

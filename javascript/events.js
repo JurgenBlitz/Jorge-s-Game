@@ -16,7 +16,6 @@ Keyboard.prototype.isKeyUp = function(e) {
   return this.keyUp == e.keyCode;
 };
 
-
 Keyboard.prototype.isKeyLeft = function(e) {
   return this.keyLeft == e.keyCode;
 };
