@@ -40,6 +40,8 @@ Game.prototype.checkCollision = function(player, food) {
     food.y + food.height > player.y
   ) {
     food.delete();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    game.player.renderPlayer();
   }
 };
 

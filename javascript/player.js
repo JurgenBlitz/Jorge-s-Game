@@ -7,6 +7,7 @@ function Player() {
   this.gravity = 0.10;
   this.dirX = 0;
   this.dirY = 0;
+  this.score = 50;
   this.keyboard = new Keyboard();
 };
 

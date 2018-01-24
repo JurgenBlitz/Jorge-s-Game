@@ -25,4 +25,11 @@ body {
   #summer {
       background-color: aqua;
       background-image: url("../images/field.jpeg");
+      z-index: 1;
+  }
+  .player-score {
+    float: left;
+    border: 2px;
+    border-color: #870007;
+    z-index: 2;
   }
