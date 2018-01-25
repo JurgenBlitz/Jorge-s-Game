@@ -1,10 +1,11 @@
 //var canvas, ctx;
 var game;
+var board
 
 window.onload = function() {
   game = new Game();
   var keys = new Keyboard();
-  var board = new Board();
+  board = new Board();
 
   setInterval(renderGame, 30);
   setInterval(game.generateFood.bind(game), 2000);
@@ -12,6 +13,7 @@ window.onload = function() {
 
 function Game() {
   this.player = new Player();
+  // this.player2 = new Player();
   this.food = [];
 
 
@@ -41,14 +43,18 @@ Game.prototype.checkCollision = function(player, food) {
     food.y + food.height > player.y
   );
 };
+Game.prototype.checkScore = function() {
+  if (this.player.score >= 100) {
+    console.log("WIN WIN WIN");
+  }
+};
 
 function renderGame() {
   //render the player
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   game.player.renderPlayer();
-  //ctx.score();
-
-
+  
+  
   //render every food item
   for (var i = game.food.length - 1; i >= 0; i--) {
     var elem = game.food[i];
@@ -58,8 +64,11 @@ function renderGame() {
       elem.delete();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       game.player.renderPlayer();
+      // game.player.renderPlayer2();
       game.food.splice(i, 1);
-      game.player.score +10;
+      game.player.updateScore(elem. points);
+      game.checkScore();
     };
+    board.showScore();
   }
 }

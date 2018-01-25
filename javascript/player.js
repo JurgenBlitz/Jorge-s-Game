@@ -1,5 +1,5 @@
-function Player() {
-  this.x = 550;
+function Player(x, y) {
+  this.x = 1000;
   this.y = 745;
   this.height = 100;
   this.width = 80;
@@ -12,13 +12,15 @@ function Player() {
 };
 
 Player.prototype.renderPlayer = function() {
-  // ctx.fillStyle="#000000";
-  // ctx.fillRect(this.x, this.y, 80, 100);
-
   var img = new Image();
   img.src = "images/still-runner-right.png";
   ctx.drawImage(img, this.x, this.y, 82, 104);
 };
+// Player.prototype.renderPlayerTwo = function() {
+//   var img = new Image();
+//   img.src = "images/still-rival-right.png";
+//   ctx.drawImage(img, 200, this.y, 82, 104);
+// };
 
 Player.prototype.move = function() {
   var newX = this.x + this.speed * this.dirX;
@@ -68,3 +70,7 @@ Player.prototype.keyboardEventUp = function(e) {
   // }
 };
 
+Player.prototype.updateScore = function(points) {
+  this.score += points;
+  console.log(this.score);
+};

@@ -8,14 +8,10 @@ var Board = function() {
   background.src = "images/field.jpeg";
   background.onload = function() {
     ctx.drawImage(background, 0, 0, 1200, 900);
-    ctx.font = "18px serif";
-    ctx.fillStyle = "black";
-    ctx.fillText("Score: " + game.player.points, 50, 50);
-
   };
-Board.prototype.score = function() {
-    ctx.font = "18px serif";
-    ctx.fillStyle = "black";
-    ctx.fillText("Score: " + game.player.points, 350, 50);
+Board.prototype.showScore = function() {
+    ctx.font = "48px serif";
+    ctx.fillStyle = "white";
+    ctx.fillText("Score: " + game.player.score, 50, 50);
  }
 };
