@@ -1,18 +1,10 @@
-/*
-window.onload = function() {
-    document.getElementById("start-button").onclick = function() {
-      startGame();
-    }
- 
-}
-*/
 function Keyboard() {
   this.keyUp = 38;
   this.keyLeft = 37;
   this.keyRight = 39;
-  this.keyW= 87;
+  this.keyW = 87;
   this.keyA = 65;
-  this.keyS= 83;
+  this.keyS = 83;
 }
 
 Keyboard.prototype.isKeyUp = function(e) {

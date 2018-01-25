@@ -1,6 +1,6 @@
 //var canvas, ctx;
 var game;
-var board
+var board;
 
 window.onload = function() {
   game = new Game();
@@ -15,7 +15,6 @@ function Game() {
   this.player = new Player();
   // this.player2 = new Player();
   this.food = [];
-
 
   window.addEventListener(
     "keydown",
@@ -34,7 +33,7 @@ Game.prototype.generateFood = function() {
   }
   this.food.push(foodInst);
 };
-
+//check for player vs food collisions
 Game.prototype.checkCollision = function(player, food) {
   return (
     food.x < player.x + player.width &&
@@ -43,9 +42,12 @@ Game.prototype.checkCollision = function(player, food) {
     food.y + food.height > player.y
   );
 };
+//check for victory conditions
 Game.prototype.checkScore = function() {
   if (this.player.score >= 100) {
-    console.log("WIN WIN WIN");
+    console.log("Player One Wins!");
+  } else if (this.player.score <= 0) {
+    console.log("Player One Loses!");
   }
 };
 
@@ -53,9 +55,9 @@ function renderGame() {
   //render the player
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   game.player.renderPlayer();
-  
-  
   //render every food item
+  //delete them from array if they collide
+  //update scores for the player
   for (var i = game.food.length - 1; i >= 0; i--) {
     var elem = game.food[i];
     elem.move();
@@ -66,9 +68,9 @@ function renderGame() {
       game.player.renderPlayer();
       // game.player.renderPlayer2();
       game.food.splice(i, 1);
-      game.player.updateScore(elem. points);
+      game.player.updateScore(elem.points);
       game.checkScore();
-    };
+    }
     board.showScore();
   }
 }

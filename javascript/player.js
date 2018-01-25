@@ -4,12 +4,12 @@ function Player(x, y) {
   this.height = 100;
   this.width = 80;
   this.speed = 15;
-  this.gravity = 0.10;
+  this.gravity = 0.1;
   this.dirX = 0;
   this.dirY = 0;
   this.score = 50;
   this.keyboard = new Keyboard();
-};
+}
 
 Player.prototype.renderPlayer = function() {
   var img = new Image();
@@ -38,7 +38,7 @@ Player.prototype.move = function() {
 
 // }
 
-Player.prototype.keyboardEventDown = function (e) {
+Player.prototype.keyboardEventDown = function(e) {
   if (this.keyboard.isKeyLeft(e)) {
     this.dirX = -1;
     this.move();
