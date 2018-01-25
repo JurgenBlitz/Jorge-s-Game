@@ -1,10 +1,10 @@
-var canvas, ctx;
+//var canvas, ctx;
 var game;
 
 window.onload = function() {
-  var board = new Board();
   game = new Game();
   var keys = new Keyboard();
+  var board = new Board();
 
   setInterval(renderGame, 30);
   setInterval(game.generateFood.bind(game), 2000);
@@ -13,8 +13,8 @@ window.onload = function() {
 function Game() {
   this.player = new Player();
   this.food = [];
-  this.board = new Board();
-  
+
+
   window.addEventListener(
     "keydown",
     this.player.keyboardEventDown.bind(this.player)
@@ -41,10 +41,13 @@ Game.prototype.checkCollision = function(player, food) {
     food.y + food.height > player.y
   );
 };
+
 function renderGame() {
   //render the player
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   game.player.renderPlayer();
+  //ctx.score();
+
 
   //render every food item
   for (var i = game.food.length - 1; i >= 0; i--) {
