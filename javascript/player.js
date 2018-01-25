@@ -1,6 +1,6 @@
-function Player(x, y) {
-  this.x = 1000;
-  this.y = 745;
+function Player(x,y,kb,img) {
+  this.x = x;
+  this.y = y;
   this.height = 100;
   this.width = 80;
   this.speed = 15;
@@ -8,19 +8,22 @@ function Player(x, y) {
   this.dirX = 0;
   this.dirY = 0;
   this.score = 50;
-  this.keyboard = new Keyboard();
+  this.keyboard = kb;
+  this.imgR = new Image();
+  this.imgR.src = "images/still-runner-right.png";
+  this.imgL = new Image();
+  this.imgL.src = "images/still-runner-left.png";
+  this.isLeft = true;
 }
 
 Player.prototype.renderPlayer = function() {
-  var img = new Image();
-  img.src = "images/still-runner-right.png";
-  ctx.drawImage(img, this.x, this.y, 82, 104);
+  if(this.isLeft){
+    ctx.drawImage(this.imgL, this.x, this.y, 82, 104);
+  }else{
+    ctx.drawImage(this.imgR, this.x, this.y, 82, 104);
+  }
 };
-// Player.prototype.renderPlayerTwo = function() {
-//   var img = new Image();
-//   img.src = "images/still-rival-right.png";
-//   ctx.drawImage(img, 200, this.y, 82, 104);
-// };
+
 
 Player.prototype.move = function() {
   var newX = this.x + this.speed * this.dirX;
@@ -39,35 +42,41 @@ Player.prototype.move = function() {
 // }
 
 Player.prototype.keyboardEventDown = function(e) {
-  if (this.keyboard.isKeyLeft(e)) {
+  if (this.keyboard.keyLeft == e.keyCode) {
     this.dirX = -1;
-    this.move();
-    var img = new Image();
-    ctx.clearRect(this.x, this.y, 100, 100);
-    img.src = "images/still-runner-left.png";
-    ctx.drawImage(img, this.x, this.y, 82, 104);
+    this.isLeft = true;
   }
-  if (this.keyboard.isKeyRight(e)) {
+  if (this.keyboard.keyRight == e.keyCode) {
     this.dirX = 1;
-    this.move();
+    this.isLeft = false;    
   }
-  // if (this.keyboard.isKeyUp(e)) {
-  //   this.dirY = -1;
-  //   this.move();
-  // }
+  if (this.keyboard.keyA == e.keyCode) {
+    this.dirX = -1;
+    this.isLeft = true;
+  }
+  if (this.keyboard.D == e.keyCode) {
+    this.dirX = 1;
+    this.isLeft = false;    
+  }
 };
 
 Player.prototype.keyboardEventUp = function(e) {
-  if (this.keyboard.isKeyLeft(e)) {
+  if (this.keyboard.keyLeft == e.keyCode) {
     this.dirX = 0;
+    this.isLeft = false;
   }
-  if (this.keyboard.isKeyRight(e)) {
+  if (this.keyboard.keyRight == e.keyCode) {
     this.dirX = 0;
+    this.isLeft =true;   
   }
-  // if (this.keyboard.isKeyUp(e)) {
-  //   this.dirY = 1;
-  //   this.move();
-  // }
+  if (this.keyboard.keyA == e.keyCode) {
+    this.dirX = 0;
+    this.isLeft = true;
+  }
+  if (this.keyboard.keyD == e.keyCode) {
+    this.dirX = 0;
+    this.isLeft = false;   
+  }
 };
 
 Player.prototype.updateScore = function(points) {

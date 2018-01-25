@@ -1,10 +1,9 @@
-//var canvas, ctx;
+
 var game;
 var board;
 
 window.onload = function() {
   game = new Game();
-  var keys = new Keyboard();
   board = new Board();
 
   setInterval(renderGame, 30);
@@ -12,13 +11,18 @@ window.onload = function() {
 };
 
 function Game() {
-  this.player = new Player();
-  // this.player2 = new Player();
+  var kb1 = new KeyboardArrows();
+  this.player = new Player(1000, 745, kb1);
+  var kb2 = new KeyboardASDF();
+  this.player2 = new Player(200, 745, kb2);
+  // var img2 = new Image();
   this.food = [];
 
   window.addEventListener(
     "keydown",
-    this.player.keyboardEventDown.bind(this.player)
+    this.player.keyboardEventDown.bind(this.player),
+    // "keyup",
+    // this.player.keyboardEventUp.bind(this.player),
   );
 }
 //establish both food types
@@ -54,7 +58,10 @@ Game.prototype.checkScore = function() {
 function renderGame() {
   //render the player
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  game.player.move();
   game.player.renderPlayer();
+  game.player2.move();
+  game.player2.renderPlayer();
   //render every food item
   //delete them from array if they collide
   //update scores for the player
