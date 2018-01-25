@@ -9,9 +9,9 @@ var Board = function() {
   background.onload = function() {
     ctx.drawImage(background, 0, 0);
   };
-    function score() {
-    ctx.font = "18px serif";
-    ctx.fillStyle = "black";
-    ctx.fillText("Score: " + game.player.points, 350, 50);
-  };
+  // function score() {
+  //   ctx.font = "18px serif";
+  //   ctx.fillStyle = "black";
+  //   ctx.fillText("Score: " + game.player.points, 350, 50);
+
 };

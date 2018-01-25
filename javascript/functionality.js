@@ -6,13 +6,14 @@ window.onload = function() {
   game = new Game();
   var keys = new Keyboard();
 
-  setInterval(renderGame, 50);
+  setInterval(renderGame, 30);
   setInterval(game.generateFood.bind(game), 2000);
 };
 
 function Game() {
   this.player = new Player();
   this.food = [];
+  this.board = new Board();
   
   window.addEventListener(
     "keydown",
@@ -55,6 +56,7 @@ function renderGame() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       game.player.renderPlayer();
       game.food.splice(i, 1);
+      game.player.score +10;
     };
   }
 }

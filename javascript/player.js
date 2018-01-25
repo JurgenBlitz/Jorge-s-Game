@@ -11,20 +11,21 @@ function Player() {
   this.keyboard = new Keyboard();
 };
 
-Player.prototype.renderPlayer = function () {
+Player.prototype.renderPlayer = function() {
   // ctx.fillStyle="#000000";
   // ctx.fillRect(this.x, this.y, 80, 100);
 
   var img = new Image();
   img.src = "images/still-runner-right.png";
-ctx.drawImage(img, this.x, this.y, 82, 104);
-}
+  ctx.drawImage(img, this.x, this.y, 82, 104);
+};
 
 Player.prototype.move = function() {
   var newX = this.x + this.speed * this.dirX;
   var newY = this.y + this.speed * this.dirY;
   if (newX <= canvas.width - 90 && newX >= 0) {
     this.x = newX;
+    this.img = new Image();
   }
   if (newY <= canvas.width - 110 && newY >= 0) {
     this.y = newY;
@@ -39,6 +40,10 @@ Player.prototype.keyboardEventDown = function (e) {
   if (this.keyboard.isKeyLeft(e)) {
     this.dirX = -1;
     this.move();
+    var img = new Image();
+    ctx.clearRect(this.x, this.y, 100, 100);
+    img.src = "images/still-runner-left.png";
+    ctx.drawImage(img, this.x, this.y, 82, 104);
   }
   if (this.keyboard.isKeyRight(e)) {
     this.dirX = 1;

@@ -1,19 +1,33 @@
 body {
-    font-family: 'Concert One';
-    font-size: 40px;
-    padding: 0;
-    text-align: center;
-    color: white;
-    background-color: blue;
-    width: 1300px;
-    height: 900px;
-  }
-  body button {
-    font-size: 30px;
-    background-color: #870007;
-    padding: 20px 40px;
-    border: 0;
-    box-shadow: 0;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
+  font-family: "Concert One";
+  font-size: 40px;
+  padding: 0;
+  text-align: center;
+  color: white;
+  background-color: blue;
+  width: 100% auto;
+  height: 900px;
+}
+
+h1 {
+  padding-bottom: 80px;
+}
+
+p {
+  padding-bottom: 10px; 
+}
+
+body button {
+  font-size: 30px;
+  background-color: #870007;
+  padding: 20px 40px;
+  border: 5px white solid;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+button>a {
+  color: white;
+  text-decoration: none;
+}
