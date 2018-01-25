@@ -10,13 +10,13 @@ var Board = function() {
     ctx.drawImage(background, 0, 0, 1200, 900);
   };
   Board.prototype.showScore = function() {
-    ctx.font = "48px serif";
+    ctx.font = "48px Concert One";
     ctx.fillStyle = "white";
-    ctx.fillText("Player 1 Score: " + game.player.score, 50, 50);
+    ctx.fillText("Player 1 Score: " + game.player.score, 800, 50);
   };
   Board.prototype.showScore2 = function() {
-    ctx.font = "48px serif";
+    ctx.font = "48px Concert One";
     ctx.fillStyle = "white";
-    ctx.fillText("Player 2 Score: " + game.player2.score, 800, 50);
+    ctx.fillText("Player 2 Score: " + game.player2.score, 50, 50);
   };
 };

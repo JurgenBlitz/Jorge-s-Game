@@ -1,5 +1,5 @@
 function Food(points) {
-  this.speed = 10;
+  this.speed = 12;
   this.x = Math.random() * canvas.width - 100;
   this.y = 0;
   this.height = 50;

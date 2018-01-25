@@ -49,11 +49,10 @@ Game.prototype.checkCollision = function(player, food) {
 };
 //check for victory conditions
 Game.prototype.checkScore = function() {
-  if (this.player.score >= 100) {
-    console.log("Player One Wins!");
+  if (this.player.score >= 150) {
     location.href ="victoryone.html";
-  } else if (this.player.score <= 0) {
-    console.log("Player One Loses!");
+  } else if (this.player2.score >= 150) {
+    location.href ="victorytwo.html";
   }
 };
 
