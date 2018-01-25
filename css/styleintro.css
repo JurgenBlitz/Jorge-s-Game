@@ -31,3 +31,20 @@ button>a {
   color: white;
   text-decoration: none;
 }
+
+.victory {
+  width: 100% auto;
+  background-color: black;
+}
+.player-one-wins {
+  background-color: blue;
+
+}
+.crown>img {
+  height: 100px;
+  width: 120px;
+}
+.sprite-one>img {
+  height: 100px;
+  width: 120px;
+}

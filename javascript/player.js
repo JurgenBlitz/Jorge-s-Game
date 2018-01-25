@@ -30,7 +30,6 @@ Player.prototype.move = function() {
   var newY = this.y + this.speed * this.dirY;
   if (newX <= canvas.width - 90 && newX >= 0) {
     this.x = newX;
-    this.img = new Image();
   }
   if (newY <= canvas.width - 110 && newY >= 0) {
     this.y = newY;
@@ -58,9 +57,10 @@ Player.prototype.keyboardEventDown = function(e) {
     this.dirX = 1;
     this.isLeft = false;    
   }
-};
+} 
 
 Player.prototype.keyboardEventUp = function(e) {
+  console.log("CAZZO!")
   if (this.keyboard.keyLeft == e.keyCode) {
     this.dirX = 0;
     this.isLeft = false;
@@ -71,11 +71,11 @@ Player.prototype.keyboardEventUp = function(e) {
   }
   if (this.keyboard.keyA == e.keyCode) {
     this.dirX = 0;
-    this.isLeft = true;
+    this.isLeft = false;
   }
   if (this.keyboard.keyD == e.keyCode) {
     this.dirX = 0;
-    this.isLeft = false;   
+    this.isLeft = true;   
   }
 };
 

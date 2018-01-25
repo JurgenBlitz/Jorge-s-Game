@@ -1,10 +1,12 @@
 
 var game;
 var board;
+var audio = new Audio("audio/spazzmatica_polka.mp3");
 
 window.onload = function() {
   game = new Game();
   board = new Board();
+  audio.play();
 
   setInterval(renderGame, 30);
   setInterval(game.generateFood.bind(game), 2000);
@@ -50,6 +52,7 @@ Game.prototype.checkCollision = function(player, food) {
 Game.prototype.checkScore = function() {
   if (this.player.score >= 100) {
     console.log("Player One Wins!");
+    location.href ="victoryone.html";
   } else if (this.player.score <= 0) {
     console.log("Player One Loses!");
   }
