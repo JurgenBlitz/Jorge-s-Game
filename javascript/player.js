@@ -1,4 +1,4 @@
-function Player(x,y,kb,img) {
+function Player(x, y, kb, img) {
   this.x = x;
   this.y = y;
   this.height = 100;
@@ -9,21 +9,22 @@ function Player(x,y,kb,img) {
   this.dirY = 0;
   this.score = 50;
   this.keyboard = kb;
-  this.imgR = new Image();
-  this.imgR.src = "images/still-runner-right.png";
-  this.imgL = new Image();
-  this.imgL.src = "images/still-runner-left.png";
+  this.imgR1 = new Image();
+  this.imgR1.src = "images/still-runner-right.png";
+  this.imgL1 = new Image();
+  this.imgL1.src = "images/still-runner-left.png";
+  // this.img2 = new Image();
+  // this.img2 = "images/still-rival-right.png";
   this.isLeft = true;
 }
 
 Player.prototype.renderPlayer = function() {
-  if(this.isLeft){
-    ctx.drawImage(this.imgL, this.x, this.y, 82, 104);
-  }else{
-    ctx.drawImage(this.imgR, this.x, this.y, 82, 104);
+  if (this.isLeft) {
+    ctx.drawImage(this.imgL1, this.x, this.y, 82, 104);
+  } else {
+    ctx.drawImage(this.imgR1, this.x, this.y, 82, 104);
   }
 };
-
 
 Player.prototype.move = function() {
   var newX = this.x + this.speed * this.dirX;
@@ -47,35 +48,38 @@ Player.prototype.keyboardEventDown = function(e) {
   }
   if (this.keyboard.keyRight == e.keyCode) {
     this.dirX = 1;
-    this.isLeft = false;    
+    this.isLeft = false;
   }
+};
+Player.prototype.keyboardEventDownP2 = function(e) {
   if (this.keyboard.keyA == e.keyCode) {
     this.dirX = -1;
     this.isLeft = true;
   }
-  if (this.keyboard.D == e.keyCode) {
+  if (this.keyboard.keyD == e.keyCode) {
     this.dirX = 1;
-    this.isLeft = false;    
+    this.isLeft = false;
   }
-} 
+};
 
 Player.prototype.keyboardEventUp = function(e) {
-  console.log("CAZZO!")
   if (this.keyboard.keyLeft == e.keyCode) {
     this.dirX = 0;
     this.isLeft = false;
   }
   if (this.keyboard.keyRight == e.keyCode) {
     this.dirX = 0;
-    this.isLeft =true;   
+    this.isLeft = true;
   }
+} 
+Player.prototype.keyboardEventUpP2 = function(e) {
   if (this.keyboard.keyA == e.keyCode) {
     this.dirX = 0;
     this.isLeft = false;
   }
   if (this.keyboard.keyD == e.keyCode) {
     this.dirX = 0;
-    this.isLeft = true;   
+    this.isLeft = true;
   }
 };
 
