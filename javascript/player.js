@@ -1,4 +1,4 @@
-function Player(x, y, kb, img) {
+function Player(x, y, kb, imgR, imgL) {
   this.x = x;
   this.y = y;
   this.height = 100;
@@ -9,37 +9,34 @@ function Player(x, y, kb, img) {
   this.dirY = 0;
   this.score = 50;
   this.keyboard = kb;
-  this.imgR1 = new Image();
-  this.imgR1.src = "images/still-runner-right.png";
-  this.imgL1 = new Image();
-  this.imgL1.src = "images/still-runner-left.png";
-  // this.img2 = new Image();
-  // this.img2 = "images/still-rival-right.png";
+  this.imgR = new Image();
+  this.imgR.src = imgR;
+  this.imgL = new Image();
+  this.imgL.src = imgL;
   this.isLeft = true;
 }
 
 Player.prototype.renderPlayer = function() {
   if (this.isLeft) {
-    ctx.drawImage(this.imgL1, this.x, this.y, 82, 104);
+    ctx.drawImage(this.imgL, this.x, this.y, 82, 104);
   } else {
-    ctx.drawImage(this.imgR1, this.x, this.y, 82, 104);
+    ctx.drawImage(this.imgR, this.x, this.y, 82, 104);
   }
 };
 
 Player.prototype.move = function() {
   var newX = this.x + this.speed * this.dirX;
-  var newY = this.y + this.speed * this.dirY;
   if (newX <= canvas.width - 90 && newX >= 0) {
     this.x = newX;
-  }
-  if (newY <= canvas.width - 110 && newY >= 0) {
-    this.y = newY;
   }
 };
 
 // Player.prototype.jump = function() {
-
-// }
+//   var newY = this.y + this.speed * this.dirY;
+//   if (newY <= canvas.width - 110 && newY >= 0) {
+//     this.y = newY;
+//   }
+// };
 
 Player.prototype.keyboardEventDown = function(e) {
   if (this.keyboard.keyLeft == e.keyCode) {
@@ -50,6 +47,9 @@ Player.prototype.keyboardEventDown = function(e) {
     this.dirX = 1;
     this.isLeft = false;
   }
+  if (this.keyboard.keyUp == e.keyCode) {
+    this.dirY = -1;
+  }
 };
 Player.prototype.keyboardEventDownP2 = function(e) {
   if (this.keyboard.keyA == e.keyCode) {
@@ -59,6 +59,9 @@ Player.prototype.keyboardEventDownP2 = function(e) {
   if (this.keyboard.keyD == e.keyCode) {
     this.dirX = 1;
     this.isLeft = false;
+  }
+  if (this.keyboard.keyW == e.keyCode) {
+    this.dirY = -1;
   }
 };
 
@@ -71,7 +74,11 @@ Player.prototype.keyboardEventUp = function(e) {
     this.dirX = 0;
     this.isLeft = true;
   }
-} 
+  if (this.keyboard.keyUp == e.keyCode) {
+    this.dirY = 0;
+  }
+};
+
 Player.prototype.keyboardEventUpP2 = function(e) {
   if (this.keyboard.keyA == e.keyCode) {
     this.dirX = 0;
@@ -80,6 +87,9 @@ Player.prototype.keyboardEventUpP2 = function(e) {
   if (this.keyboard.keyD == e.keyCode) {
     this.dirX = 0;
     this.isLeft = true;
+  }
+  if (this.keyboard.keyW == e.keyCode) {
+    this.dirY = 0;
   }
 };
 

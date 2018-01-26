@@ -14,11 +14,9 @@ window.onload = function() {
 
 function Game() {
   var kb1 = new KeyboardArrows();
-  this.player = new Player(1000, 745, kb1);
+  this.player = new Player(1000, 745, kb1, "images/still-runner-right.png", "images/still-runner-left.png");
   var kb2 = new KeyboardASDF();
-  var img2 = new Image();
-  img2.src= "images/still-rival-left.png";
-  this.player2 = new Player(200, 745, kb2, img2);
+  this.player2 = new Player(200, 745, kb2, "images/still-rival-right.png", "images/still-rival-left.png");
   this.food = [];
 
   window.addEventListener("keydown", this.player.keyboardEventDown.bind(this.player));
@@ -49,20 +47,23 @@ Game.prototype.checkCollision = function(player, food) {
 };
 //check for victory conditions
 Game.prototype.checkScore = function() {
-  if (this.player.score >= 150) {
+  if (this.player.score >= 100) {
     location.href ="victoryone.html";
-  } else if (this.player2.score >= 150) {
+  } else if (this.player2.score >= 100) {
     location.href ="victorytwo.html";
   }
 };
 
 function renderGame() {
-  //render the player
+  //render the player and enable movement
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   game.player.move();
+  //game.player.jump();
   game.player.renderPlayer();
   game.player2.move();
+  //game.player2.jump();
   game.player2.renderPlayer();
+
   //render every food item
   //delete them from array if they collide
   //update scores for the player
