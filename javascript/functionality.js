@@ -6,7 +6,7 @@ var audio = new Audio("audio/spazzmatica_polka.mp3");
 window.onload = function() {
   game = new Game();
   board = new Board();
-  //audio.play();
+  audio.play();
 
   setInterval(renderGame, 30);
   setInterval(game.generateFood.bind(game), 2000);
