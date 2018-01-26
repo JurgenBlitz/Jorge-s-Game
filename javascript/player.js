@@ -4,7 +4,7 @@ function Player(x, y, kb, imgR, imgL) {
   this.height = 100;
   this.width = 80;
   this.speed = 15;
-  this.gravity = 0.1;
+  //this.gravity = 0.1;
   this.dirX = 0;
   this.dirY = 0;
   this.score = 50;
@@ -31,13 +31,6 @@ Player.prototype.move = function() {
   }
 };
 
-// Player.prototype.jump = function() {
-//   var newY = this.y + this.speed * this.dirY;
-//   if (newY <= canvas.width - 110 && newY >= 0) {
-//     this.y = newY;
-//   }
-// };
-
 Player.prototype.keyboardEventDown = function(e) {
   if (this.keyboard.keyLeft == e.keyCode) {
     this.dirX = -1;
@@ -61,7 +54,7 @@ Player.prototype.keyboardEventDownP2 = function(e) {
     this.isLeft = false;
   }
   if (this.keyboard.keyW == e.keyCode) {
-    this.dirY = -1;
+    this.dirY = -5;
   }
 };
 

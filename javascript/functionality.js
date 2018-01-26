@@ -1,7 +1,7 @@
 
 var game;
 var board;
-//var audio = new Audio("audio/spazzmatica_polka.mp3");
+var audio = new Audio("audio/spazzmatica_polka.mp3");
 
 window.onload = function() {
   game = new Game();
@@ -58,10 +58,8 @@ function renderGame() {
   //render the player and enable movement
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   game.player.move();
-  //game.player.jump();
   game.player.renderPlayer();
   game.player2.move();
-  //game.player2.jump();
   game.player2.renderPlayer();
 
   //render every food item
